@@ -1,0 +1,7 @@
+#!/bin/sh
+raw=$(amixer sget Master | grep 'Left:')
+value=$(echo "$raw" | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1)
+status=$(echo "$raw" | awk -F'[][]' '{ print $4 }')
+cat <<EOF
+{"status": "$status", "value": "$value"}
+EOF

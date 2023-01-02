@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+eStatus=$(cat /sys/class/net/e*/operstate)
+nStatus=$(cat /sys/class/net/w*/operstate)
+icon="睊"
+name="no connection"
+if [ "$nStatus" = up ]; then
+  icon=""
+  name="$(iwgetid -r)"
+fi
+
+if [ "$eStatus" = up ]; then
+  icon="≐"
+  name="cable connection"
+fi
+
+cat <<EOF
+{"icon": "$icon", "name": "$name"}
+EOF
