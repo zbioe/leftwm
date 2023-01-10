@@ -8,12 +8,32 @@ if [[ $window == "" || $title == "" ]]; then
   exit 0
 fi
 
-toshow="$window - $title"
-maxlen=30
+# fix .<program>-wrappe name
+if [[ $window == .*-w* ]]; then
+  window=$(cut -f2 -d. <<<"$window" | cut -f1 -d-)
+fi
 
+# uppercase first char
+window=${window^}
+
+# fix long string with window name in end of tiitle
+if [[ $title == *$window ]]; then
+  if [[ $title == *—* ]]; then
+    title=${title%—*}
+  elif [[ $title == *–* ]]; then
+    title=${title%–*}
+  fi
+fi
+
+if [[ $window == $title ]]; then
+  toshow="$window"
+else
+  toshow="$window - $title"
+fi
+maxlen=70
 sufix=""
 
-if test $(echo $toshow | wc -c) -ge $maxlen ; then
+if test $(wc -c <<<$toshow) -ge $maxlen; then
   sufix=" ..."
 fi
 

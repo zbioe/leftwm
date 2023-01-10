@@ -37,4 +37,6 @@ if [ -x "$(command -v nitrogen)" ]; then
   nitrogen --restore
 fi
 sleep 1
+
+(pgrep eww) && eww kill
 eww open bar
