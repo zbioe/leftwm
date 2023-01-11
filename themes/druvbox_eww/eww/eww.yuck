@@ -19,9 +19,8 @@
     (light)
     (volume)
     (network)
-    (time)
+    (datetime)
     (battery)))
-
 
 (defwidget center []
   (box :class "center-widgets"
@@ -29,12 +28,11 @@
        :halign "center"
        :orientation "h"
     (wintitle)
-    (music)
-  )
-)
+    (music)))
+
 (defwidget wintitle []
-  (label :text xtitle :class "wintitle")
-)
+  (label :text xtitle :class "wintitle"))
+
 (defpoll xtitle :interval "1s" "scripts/getWinTitle")
 
 (defpoll light :interval "3s" "brightnessctl -m | awk -F, '{print $4}' | tr -d %")
@@ -84,8 +82,6 @@
        :halign "center"
     {music != "" ? "♬${music}" : ""}))
 
-
-
 (defwidget metric [label value onchange]
   (box :orientation "h"
        :class "metric"
@@ -99,20 +95,19 @@
            :value value
            :onchange onchange)))
 
-(defwidget time []
-  (box :class "time" {"${time}"}))
-
-
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
 (defpoll volume :interval "1s" :initial "50"
   "scripts/getvol")
 
-(defpoll time :interval "10s"
-  "date '+%H:%M'")
+(defpoll datetime :interval "10s"
+  "scripts/getDatetime")
 
-(deflisten wmstate 
+(defwidget datetime []
+  (box :tooltip "${datetime.long}" :class "time" {"${datetime.time}"}))
+
+(deflisten wmstate
            :initial '{"workspaces":[{"layout":"","tags":[{"name":"","index":0,"mine":false,"busy":false,"visible":false,"urgent":false}]}]}'
            "leftwm state")
 
