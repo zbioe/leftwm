@@ -35,7 +35,7 @@
 
 (defpoll xtitle :interval "1s" "scripts/getWinTitle")
 
-(defpoll light :interval "3s" "brightnessctl -m | awk -F, '{print $4}' | tr -d %")
+(defpoll light :interval "1s" "brightnessctl -m | awk -F, '{print $4}' | tr -d %")
 (defwidget light []
   (box :class "metric"
        :orientation "h"
