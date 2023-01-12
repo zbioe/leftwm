@@ -5,7 +5,9 @@ bat="/sys/class/power_supply/$name"
 per="$(cat "$bat/capacity")"
 status="$(cat "$bat/status")"
 
-if [ "$per" -gt "90" ]; then
+if [ "$per" -eq "100" ]; then
+    icon="✳️"
+elif [ "$per" -gt "90" ]; then
     icon=""
 elif [ "$per" -gt "80" ]; then
     icon=""
