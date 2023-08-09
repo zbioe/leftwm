@@ -50,6 +50,9 @@
     keybind: [
         // Commands
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "p"),
+        (command: Execute, value: "rofi -show window", modifier: ["modkey", "Control"], key: "w"),
+        (command: Execute, value: "rofi -show emoji", modifier: ["modkey", "Control"], key: "e"),
+        (command: Execute, value: "rofi -show filebrowser", modifier: ["modkey", "Control"], key: "f"),
         (command: Execute, value: "alacritty --class MainAlacritty --config-file ~/.config/alacritty/main.yml", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
