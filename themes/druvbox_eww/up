@@ -32,6 +32,15 @@ fi
 # Set the theme.ron config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
+
+if test "$(cat /sys/class/drm/*/status | grep ^connected | wc -l)" -eq 2; then
+  xrandr \
+    --output eDP-1 \
+    --primary --mode 1920x1080 --pos 320x1080 --rotate normal \
+    --output HDMI-1 \
+    --mode 2560x1080 --pos 0x0 --rotate normal
+fi
+
 # Set background
 if [ -x "$(command -v nitrogen)" ]; then
   nitrogen --restore
