@@ -12,8 +12,8 @@
     modkey: "Mod4",
     mousekey: "Mod4",
     workspaces: [
-        // ( output: "eDP-1", x:320, y:1080, width: 1920, height: 1080),
-        // ( output: "HDMI-1", x:0, y:0, width: 2560, height: 1080),
+         ( output: "eDP-1", x:320, y:1080, width: 1920, height: 1080),
+         ( output: "HDMI-1", x:0, y:0, width: 2560, height: 1080),
     ],
     tags: [
         "I",
