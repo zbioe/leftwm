@@ -12,8 +12,8 @@
     modkey: "Mod4",
     mousekey: "Mod4",
     workspaces: [
-        ( output: "eDP-1", x:370, y:1080, width: 1920, height: 1080),
-        ( output: "HDMI-1", x:0, y:0, width: 2560, height: 1080),
+         // ( output: "eDP-1", x:370, y:1080, width: 1920, height: 1080),
+         // ( output: "HDMI-1", x:0, y:0, width: 2560, height: 1080),
     ],
     tags: [
         "I",
@@ -29,9 +29,9 @@
     ],
     max_window_width: None,
     layouts: [
-        LeftWiderRightStack,
-        MainAndVertStack,
-        Monocle,
+        "LeftWiderRightStack",
+        "EvenHorizontal",
+        "Monocle",
     ],
     layout_mode: Tag,
     insert_behavior: Bottom,
@@ -40,7 +40,7 @@
         (name: "PavuControl", value: "pavucontrol", x: 0.1, y: 0.1, height: 0.8, width: 0.8),
     ],
     window_rules: [
-        // ( window_class: "firefox", spawn_on_tag: 2 ),
+        // ( window_class: "io.github.zen_browser.zen", spawn_on_tag: 2 ),
         ( window_class: "MainAlacritty", spawn_on_tag: 9 ),
         ( window_class: "emacs", spawn_on_tag: 10 ),
     ],
@@ -56,6 +56,7 @@
         (command: Execute, value: "rofi -show window", modifier: ["modkey", "Control"], key: "w"),
         (command: Execute, value: "rofi -show emoji", modifier: ["modkey", "Control"], key: "e"),
         (command: Execute, value: "rofi -show filebrowser", modifier: ["modkey", "Control"], key: "f"),
+        (command: Execute, value: "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'", modifier: ["modkey", "Control"], key: "c"),
         (command: Execute, value: "alacritty --class MainAlacritty --config-file ~/.config/alacritty/main.toml", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
